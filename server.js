@@ -30,6 +30,7 @@ app.use(express.json());
 
 app.use("/api/users", authMiddleware, userRouter);
 app.post("/login", usersController.login);
+app.post("/api/users/me", authMiddleware, usersController.me);
 
 app.use("/", express.static("public"));
 
