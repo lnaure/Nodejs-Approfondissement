@@ -1,7 +1,14 @@
 const User = require("./users.model");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+const config = require("../../config")
 
 class UserService {
+  me(token){
+    const decoded = jwt.verify(token, config.secretJwtToken);
+    console.log(decoded.userId);
+    return User.findById(decoded.userId, "-password");
+  }
   getAll() {
     return User.find({}, "-password");
   }
@@ -27,6 +34,7 @@ class UserService {
     if (!bool) {
       return false;
     }
+    
     return user._id;
   }
 }

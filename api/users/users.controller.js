@@ -5,6 +5,15 @@ const config = require("../../config");
 const usersService = require("./users.service");
 
 class UsersController {
+
+  async me(req, res, next){
+    try{
+      const User = await usersService.me(req.header("x-access-token"));
+      res.json(User);
+    }catch(err){
+      next(err);
+    }
+  }
   async getAll(req, res, next) {
     try {
       const users = await usersService.getAll();
