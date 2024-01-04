@@ -1,5 +1,5 @@
 module.exports = {
   port: process.env.PORT || 3000,
-  mongoUri: "mongodb://localhost:27017/myapp",
-  secretJwtToken: "test",
+  mongoUri: "mongodb://127.0.0.1/myapp",
+  secretJwtToken: "test2"
 };
